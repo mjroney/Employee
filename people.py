@@ -1,17 +1,17 @@
 class people:
 
-	self.people = {person : dict() for person in people}
+	all_people = {person : dict() for person in people}
 
 	def __init__(self, clock_num, first_name, last_name, \
         seniority_date, benefit_date, area):
 		self.clock_num = clock_num
 		self.first_name = first_name
 		self.last_name = last_name
-		self.seniority_date = seniority_date
+        self.seniority_date = seniority_date
         self.benefit_date = benefit_date
 		self.area = area
 
-	def make_record():
+    def make_record():
         person = {
             'clock_num': input('Clock number: \n'),
             'first_name': input('First name: \n'),
