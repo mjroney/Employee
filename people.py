@@ -1,15 +1,14 @@
 class people:
 
-	all_people = {person : dict() for person in people}
+    all_people = {person : dict() for person in people}
 
-	def __init__(self, clock_num, first_name, last_name, \
-        seniority_date, benefit_date, area):
-		self.clock_num = clock_num
-		self.first_name = first_name
-		self.last_name = last_name
+    def __init__(self, clock_num, first_name, last_name,seniority_date, benefit_date, area):
+        self.clock_num = clock_num
+        self.first_name = first_name
+        self.last_name = last_name
         self.seniority_date = seniority_date
         self.benefit_date = benefit_date
-		self.area = area
+        self.area = area
 
     def make_record():
         person = {
@@ -21,10 +20,10 @@ class people:
             'area': input('Area: \n'),
             }
         prompt = print('Please enter the following information:')
-        for item in person:
-            item.get(key)
 
-    # Decorator for date inputs
+    # Decorator for date inputs, probably could put in another file and import
+    # along side the 'people' class/function
+    
     def datetimer(func):
         def function_wrapper(X):
             print('Enter your ', X, 'in \n YYYY, MM, DD format.')
