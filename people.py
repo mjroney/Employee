@@ -1,25 +1,42 @@
-class people:
+import sqlite3
+import time
+import datetime
 
-    all_people = {person : dict() for person in people}
+conn = sqlite3.connect('employees.db')
+c = conn.cursor()
 
-    def __init__(self, clock_num, first_name, last_name,seniority_date, benefit_date, area):
-        self.clock_num = clock_num
-        self.first_name = first_name
-        self.last_name = last_name
-        self.seniority_date = seniority_date
-        self.benefit_date = benefit_date
-        self.area = area
+def create_table():
+	c.execute("CREATE TABLE IF NOT EXISTS person(clock_num TEXT, first_name TEXT, last_name TEXT, seniority_date INT, benefit_date INT, birthday INT, area TEXT)")
+'''
+def data_entry():
+	c.execute("INSERT INTO 
+	conn.commit()
+	c.close()
+	conn.close()
+'''
+@sql_entry
+def make_record():
+    person = {
+        'clock_num': input('Clock number: \n'),
+        'first_name': input('First name: \n'),
+        'last_name': input('Last name: \n'),
+        'seniority_date': date_name('seniority date'),
+        'benefit_date': date_name('benefit date'),
+        'birthday' : date_name('birthday')
+        'area': input('Area: \n'),
+        }
 
-    def make_record():
-        person = {
-            'clock_num': input('Clock number: \n'),
-            'first_name': input('First name: \n'),
-            'last_name': input('Last name: \n'),
-            'seniority_date': date_name('seniority date'),
-            'benefit_date': date_name('benefit date'),
-            'area': input('Area: \n'),
-            }
-        prompt = print('Please enter the following information:')
+def sql_entry(func):
+	def function_wrapper(X):
+		func(X)
+		c.execute("INSERT INTO person VALUES(clock_num, first_name, last_name, seniority_date, benefit_date, birthday, area)")
+		conn.commit()
+		c.close()
+		conn.close()
+		return 'Connected, uploaded, closed'
+	return function_wrapper
+
+create_table()
 
     # Decorator for date inputs, probably could put in another file and import
     # along side the 'people' class/function
