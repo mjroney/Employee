@@ -31,10 +31,10 @@ class tm_func:
         x = birthday.strftime('%j')
         # If the birthday hasn't happened in current year then years would be 1 too high
         if int(x) > int(t):
-            diff = (today.toordinal - 365) - X.toordinal()
+            diff = (today.toordinal() - 365) - birthday.toordinal()
             since = date.timetuple(diff.fromordinal())
             return "You are {} years and {} months old.".format(since.tm_year, since.tm_mon)
         else:
-            diff = (today.toordinal) - X.toordinal()
+            diff = (today.toordinal()) - birthday.toordinal()
             since = date.timetuple(diff.fromordinal())
             return "You are {} years and {} months old.".format(since.tm_year, since.tm_mon)
