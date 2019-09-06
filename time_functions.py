@@ -24,17 +24,12 @@ class tm_func:
         # Used to create the datetime object for initial input into db.
         pass
 
-    def time_since():
+    def time_since(X):
         today = date.today()
-        birthday = tm_func.date_name('birthday')
+        X = tm_func.date_name(X)
         t = today.strftime('%j')
-        x = birthday.strftime('%j')
-        # If the birthday hasn't happened in current year then years would be 1 too high
-        if int(x) > int(t):
-            diff = (today.toordinal() - 365) - birthday.toordinal()
-            since = date.timetuple(diff.fromordinal())
-            return "You are {} years and {} months old.".format(since.tm_year, since.tm_mon)
-        else:
-            diff = (today.toordinal()) - birthday.toordinal()
-            since = date.timetuple(diff.fromordinal())
-            return "You are {} years and {} months old.".format(since.tm_year, since.tm_mon)
+        x = X.strftime('%j')
+        # '-1' puts result as completed years, not 'completed plus current'
+        diff = (today.toordinal()) - X.toordinal()
+        since = date.timetuple(date.fromordinal(diff))
+        return "You are {} years and {} months old.".format(since.tm_year - 1, since.tm_mon)
