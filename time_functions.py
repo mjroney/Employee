@@ -1,10 +1,9 @@
-import datetime
-from datetime import date, time, datetime, timedelta
-from time import ctime, strftime, struct_time, strptime, localtime, mktime, time
-
 class tm_func:
 
     def __init__(self, datetimer, date_name, time_since):
+        import datetime
+        from datetime import date, time, datetime, timedelta
+        from time import ctime, strftime, struct_time, strptime, localtime, mktime, time
         self.datetimer = datetimer
         self.date_name = date_name
         self.time_since = time_since
@@ -33,3 +32,10 @@ class tm_func:
         diff = (today.toordinal()) - X.toordinal()
         since = date.timetuple(date.fromordinal(diff))
         return "You are {} years and {} months old.".format(since.tm_year - 1, since.tm_mon)
+    
+    def date_num(*X):
+        # Converts between ordinal and datetime objects.
+        if int(X) == int:
+            return date.fromordinal(X)
+        else:
+            return date.toordinal(X)
